@@ -1,5 +1,5 @@
 #Preparamos el directorio de trabajo
-setwd("C:/Users/dantr/OneDrive/Escritorio/IABD/Programación de IA/Tarea 3")
+setwd("C:/Users/dantr/OneDrive/Escritorio/IABD/Programación de IA/PrIA-TArea3")
 
 #Creamos un dataframe para cada archivo y los rellenamos leyéndolos
 poblacion <- read.csv("poblacion.csv",
