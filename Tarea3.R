@@ -1,3 +1,8 @@
+
+
+#Daniel Aybar Soto
+#Programación de Inteligencia Artificial
+
 #Ejercicio 1
 #Preparamos el directorio de trabajo
 setwd("C:/Users/dantr/OneDrive/Escritorio/IABD/Programación de IA/PrIA-TArea3")
@@ -84,6 +89,42 @@ poblacion$poblacion <- a_numerico(poblacion$poblacion)
 #Reiniciamos los índices de las filas y comprobamos los datos
 rownames(poblacion) <- NULL
 print(head(poblacion))
+
+#Apartado B
+#Filtramos por los trimestres de 2023, sexo (Hombres y Mujeres), y excluimos las entradas de "Total Nacional"
+tasas <- subset(tasas, 
+                Periodo %in% c("2023T1", "2023T2", "2023T3", "2023T4") & 
+                Sexo %in% c("Hombres", "Mujeres") & 
+                Provincias != "Total Nacional")
+
+#Renombramos las columnas mientras limpiamos el formato de sus datos
+tasas$provincia <- limpiar_codigo(tasas$Provincias)
+tasas$valor <- a_numerico(tasas$Total)
+
+#Comprobamos las primeras 8 filas
+print(head(tasas, 8))
+
+#Apartado C
+#Filtrarmos el año 2023, con indicador "Renta neta media por persona", filas con provincia y sin diferenciar islas
+renta <- subset(renta, 
+                Periodo == 2023 & 
+                `Indicadores.de.renta.media` == "Renta neta media por persona" & 
+                !is.na(Provincias) & Provincias != "" & 
+                (is.na(Islas) | Islas == ""))
+
+#Conservamos únicamente las columnas necesarias
+renta <- renta[, c("Provincias", "Total")]
+
+#Renombramos las columnas
+colnames(renta) <- c("provincia", "renta_media")
+
+#Limpiamos los datos
+renta$provincia   <- limpiar_codigo(renta$provincia)
+renta$renta_media <- a_numerico(renta$renta_media)
+
+#Reiniciamos los índices de las filas y comprobamos
+rownames(renta) <- NULL
+print(head(renta))
 
 
 
