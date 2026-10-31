@@ -3,7 +3,7 @@
 #Daniel Aybar Soto
 #Programación de Inteligencia Artificial
 
-#Ejercicio 1
+#Ejercicio 1:
 #Preparamos el directorio de trabajo
 setwd("C:/Users/dantr/OneDrive/Escritorio/IABD/Programación de IA/PrIA-TArea3")
 
@@ -41,7 +41,7 @@ estudiar_conjunto("Conjunto Tasas:", tasas)
 
 
 
-#Ejercicio 2
+#Ejercicio 2:
 #Definimos la función para pasar los cuantitativos de carácter a numérico
 #No podemos hacer as.numeric() directamente porque da error
 a_numerico <- function(columna){
@@ -66,7 +66,7 @@ limpiar_codigo <- function(texto){
   return(trimws(texto_limpio))
 }
 
-#Apartado A
+#Apartado A:
 #Filtramos por el año 2023, cogiendo sólo hombres y mujeres (sin "Total"), y registros provinciales (sin NA ni vacíos)
 poblacion <- subset(poblacion, 
                     Periodo == 2023 & 
@@ -90,7 +90,7 @@ poblacion$poblacion <- a_numerico(poblacion$poblacion)
 rownames(poblacion) <- NULL
 print(head(poblacion))
 
-#Apartado B
+#Apartado B:
 #Filtramos por los trimestres de 2023, sexo (Hombres y Mujeres), y excluimos las entradas de "Total Nacional"
 tasas <- subset(tasas, 
                 Periodo %in% c("2023T1", "2023T2", "2023T3", "2023T4") & 
@@ -104,7 +104,7 @@ tasas$valor <- a_numerico(tasas$Total)
 #Comprobamos las primeras 8 filas
 print(head(tasas, 8))
 
-#Apartado C
+#Apartado C:
 #Filtrarmos el año 2023, con indicador "Renta neta media por persona", filas con provincia y sin diferenciar islas
 renta <- subset(renta, 
                 Periodo == 2023 & 
@@ -129,12 +129,41 @@ print(head(renta))
 
 
 
+#Ejercicio 3:
+#Comprobamos que cada combinación dispone de exactamente los 4 trimestres de 2023
+conteo_trimestres <- aggregate(Periodo ~ provincia + Sexo + Tasas, data = tasas, FUN = length)
+
+#Lanzamos un error si en algún caso nos faltase un trimestre
+stopifnot(all(conteo_trimestres$Periodo == 4))
+
+#Calculamos la media aritmética de los cuatro trimestres aplicando la función "mean"
+medias <- aggregate(valor ~ provincia + Sexo + Tasas, data = tasas, FUN = mean)
+
+#Reestructuramos el dataframe para que tenga una fila por provincia y sexo
+epa <- reshape(medias, 
+               idvar = c("provincia", "Sexo"), 
+               timevar = "Tasas", 
+               direction = "wide")
+
+#Asignamos los nombres correspondientes a cada columna
+colnames(epa) <- c("provincia", "sexo", "tasa_actividad", "tasa_paro", "tasa_empleo")
+
+#Ordenamos las columnas: provincia, sexo, tasa_actividad, tasa_paro, tasa_empleo
+epa <- epa[, c("provincia", "sexo", "tasa_actividad", "tasa_paro", "tasa_empleo")]
+
+#Ordenamos alfabéticamente por provincia y sexo
+epa <- epa[order(epa$provincia, epa$sexo),]
+
+#Reiniciamos los números de fila
+rownames(epa) <- NULL
+
+#MOstramos los resultados
+print(head(epa))
 
 
 
 
-
-
+#Ejercicio 4:
 
 
 
