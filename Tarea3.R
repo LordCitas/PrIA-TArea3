@@ -164,7 +164,57 @@ print(head(epa))
 
 
 #Ejercicio 4:
+#Primero unimos poblacion y epa, que comparten provincia y sexo
+datos_temp <- merge(poblacion, epa, by = c("provincia", "sexo"))
 
+# Segunda unión: incorporamos renta a través de la clave provincia
+datos <- merge(datos_temp, renta, by = "provincia")
+
+# ==========================================
+# 2. Reordenación de columnas y filas
+# ==========================================
+
+# Definir el orden exacto de las columnas solicitado
+columnas_orden <- c("comunidad", "provincia", "anio", "sexo", "poblacion", 
+                    "tasa_actividad", "tasa_paro", "tasa_empleo", "renta_media")
+datos <- datos[, columnas_orden]
+
+# Ordenar por provincia y sexo (reproduce la salida exacta mostrada en la captura)
+# Nota: Si el docente pide estrictamente por comunidad autónoma, se usaría:
+# datos <- datos[order(datos$comunidad, datos$provincia, datos$sexo), ]
+datos <- datos[order(datos$provincia, datos$sexo), ]
+rownames(datos) <- NULL
+
+# Visualizar las primeras 6 filas para verificar la coincidencia con la captura
+print(head(datos))
+
+# ==========================================
+# 3. Comprobaciones requeridas
+# ==========================================
+
+# A. Verificar que contiene exactamente 104 registros (52 provincias x 2 sexos)
+nrow(datos) == 104
+
+# B. Confirmar que no existen duplicados por provincia y sexo (debe devolver FALSE)
+any(duplicated(datos[, c("provincia", "sexo")]))
+
+# C. Comprobar tipos de datos de las variables
+str(datos)
+
+# D. Comprobar que no se perdieron provincias (debe haber 52 provincias únicas)
+length(unique(datos$provincia)) == 52
+
+# E. Verificar que no existen valores faltantes (NA) producidos durante las uniones
+sum(is.na(datos)) == 0
+
+# F. Comprobar que la renta media es idéntica para hombres y mujeres dentro de la misma provincia
+all(tapply(datos$renta_media, datos$provincia, function(x) length(unique(x)) == 1))
+
+# ==========================================
+# 4. Exportar el conjunto integrado a CSV
+# ==========================================
+
+write.csv(datos, file = "datos_integrados_2023.csv", row.names = FALSE)
 
 
 
