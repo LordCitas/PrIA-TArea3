@@ -300,8 +300,42 @@ colnames(media_paro_andalucia) <- c("sexo", "media_tasa_paro")
 print(media_paro_andalucia)
 
 #Apartado D: Identifique las cinco provincias con mayor renta media por persona.
+
+#Extraemos los registros únicos de provincia y renta
+renta_provincias <- unique(datos[, c("provincia", "renta_media")])
+
+#Seleccionamos las 5 entradas más altas ordenadas
+top5_renta <- head(renta_provincias[order(-renta_provincias$renta_media), ], 5)
+rownames(top5_renta) <- NULL
+
+#Imprimimos el resultado
+print(top5_renta)
+
 #Apartado E: Determine si las provincias con mayor renta presentan también menores tasas de paro. Investigue con que indicador podríamos relacionar estas dos magnitudes. (Tip: Correlación entre datos)
-#Apartado F: Para cada consulta, muestre los resultados obtenidos y explique brevemente las instrucciones utilizadas.
+
+#Calculamos la tasa de paro media para cada provincia combinando ambos sexos
+paro_provincial <- aggregate(tasa_paro ~ provincia + renta_media, data = datos, FUN = mean)
+
+#Calculamos los coeficientes de correlación lineal de Pearson y Spearman
+cor_pearson <- cor(paro_provincial$renta_media, paro_provincial$tasa_paro, method = "pearson")
+cor_spearman <- cor(paro_provincial$renta_media, paro_provincial$tasa_paro, method = "spearman")
+
+#Imprimimos los coeficientes
+print(paste("Correlación de Pearson:", round(cor_pearson, 4))) # = -0.594
+print(paste("Correlación de Spearman:", round(cor_spearman, 4))) # = -7878
+
+#Calculamos la correlación por sexo
+cor_hombres <- cor(datos$renta_media[datos$sexo == "Hombres"], 
+                   datos$tasa_paro[datos$sexo == "Hombres"])
+cor_mujeres <- cor(datos$renta_media[datos$sexo == "Mujeres"], 
+                   datos$tasa_paro[datos$sexo == "Mujeres"])
+
+#Imprimimos los coeficientes de correlación para cada sexo
+print(paste("Correlación en Hombres:", round(cor_hombres, 4)))
+print(paste("Correlación en Mujeres:", round(cor_mujeres, 4)))
+
+#Los coeficientes de correlación son muy negativos, lo cual quiere decir que hay una correlación muy fuerte:
+#la renta media alta está relacionada con un mayor nivel de actividad y empleabilidad
 
 
 
