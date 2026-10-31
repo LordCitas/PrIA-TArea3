@@ -1,0 +1,105 @@
+"comunidad","provincia","anio","sexo","poblacion","tasa_actividad","tasa_paro","tasa_empleo","renta_media"
+"Castilla - La Mancha","Albacete",2023,"Hombres",194012,66.02,9.9075,59.475,13058
+"Castilla - La Mancha","Albacete",2023,"Mujeres",193517,51.0725,14.565,43.625,13058
+"Comunitat Valenciana","Alicante/Alacant",2023,"Hombres",966477,63.6925,11.3575,56.465,12313
+"Comunitat Valenciana","Alicante/Alacant",2023,"Mujeres",988791,53.1625,15.7275,44.8,12313
+"Andalucía","Almería",2023,"Hombres",385696,68.2875,15.0375,58,11543
+"Andalucía","Almería",2023,"Mujeres",367668,54.74,17.2575,45.3275,11543
+"País Vasco","Araba/Álava",2023,"Hombres",165600,65.62,6.5225,61.3325,17806
+"País Vasco","Araba/Álava",2023,"Mujeres",170708,50.3325,8.0175,46.2775,17806
+"Asturias, Principado de","Asturias",2023,"Hombres",479739,53.5025,11.3825,47.4125,15784
+"Asturias, Principado de","Asturias",2023,"Mujeres",526321,47.025,12.88,40.9625,15784
+"Castilla y León","Ávila",2023,"Hombres",80310,59.1525,10.36,53.0225,13602
+"Castilla y León","Ávila",2023,"Mujeres",79454,46.13,13.2625,39.9925,13602
+"Extremadura","Badajoz",2023,"Hombres",329118,63.7275,15.1625,54.0575,12068
+"Extremadura","Badajoz",2023,"Mujeres",336931,51.465,22.8475,39.7025,12068
+"Balears, Illes","Balears, Illes",2023,"Hombres",602649,68.2075,10.025,61.42,16118
+"Balears, Illes","Balears, Illes",2023,"Mujeres",607257,59.12,10.9925,52.7425,16118
+"Cataluña","Barcelona",2023,"Hombres",2830260,66.7525,8.9475,60.7875,17062
+"Cataluña","Barcelona",2023,"Mujeres",2967096,57.825,9.315,52.4425,17062
+"País Vasco","Bizkaia",2023,"Hombres",557146,62.96,7.1975,58.4325,18738
+"País Vasco","Bizkaia",2023,"Mujeres",596136,52.6475,8.99,47.9325,18738
+"Castilla y León","Burgos",2023,"Hombres",178592,62.0075,7.0175,57.6525,15988
+"Castilla y León","Burgos",2023,"Mujeres",178778,51.6925,8.535,47.285,15988
+"Extremadura","Cáceres",2023,"Hombres",192508,58.46,12.815,50.96,12771
+"Extremadura","Cáceres",2023,"Mujeres",195749,47.1825,17.5475,38.8975,12771
+"Andalucía","Cádiz",2023,"Hombres",618291,60.8475,19.1075,49.215,12335
+"Andalucía","Cádiz",2023,"Mujeres",636575,49.415,25.93,36.615,12335
+"Cantabria","Cantabria",2023,"Hombres",285133,59.465,6.455,55.63,15043
+"Cantabria","Cantabria",2023,"Mujeres",303254,50.4975,9.9825,45.46,15043
+"Comunitat Valenciana","Castellón/Castelló",2023,"Hombres",299780,60.52,13.165,52.56,14029
+"Comunitat Valenciana","Castellón/Castelló",2023,"Mujeres",304306,51.63,16.5975,43.06,14029
+"Ceuta","Ceuta",2023,"Hombres",41897,66.3,24.555,50.015,14625
+"Ceuta","Ceuta",2023,"Mujeres",41155,57.4075,36.1575,36.63,14625
+"Castilla - La Mancha","Ciudad Real",2023,"Hombres",243873,62.0825,12.3175,54.435,12529
+"Castilla - La Mancha","Ciudad Real",2023,"Mujeres",248054,47.9675,21.7025,37.5675,12529
+"Andalucía","Córdoba",2023,"Hombres",379239,63.31,14.4175,54.1925,12386
+"Andalucía","Córdoba",2023,"Mujeres",395763,48.2575,23.39,36.96,12386
+"Galicia","Coruña, A",2023,"Hombres",538523,57.6075,8.2125,52.88,15319
+"Galicia","Coruña, A",2023,"Mujeres",585361,49.5025,10.0375,44.5375,15319
+"Castilla - La Mancha","Cuenca",2023,"Hombres",99934,61.5125,8.33,56.4025,12725
+"Castilla - La Mancha","Cuenca",2023,"Mujeres",98502,49.4725,15.3175,41.905,12725
+"País Vasco","Gipuzkoa",2023,"Hombres",354758,57.915,6.7225,54.0225,19616
+"País Vasco","Gipuzkoa",2023,"Mujeres",371954,52.7325,8.2025,48.395,19616
+"Cataluña","Girona",2023,"Hombres",404692,66.585,8.93,60.6275,15130
+"Cataluña","Girona",2023,"Mujeres",403980,55.5125,11.185,49.315,15130
+"Andalucía","Granada",2023,"Hombres",460537,64.1575,17.185,53.135,12709
+"Andalucía","Granada",2023,"Mujeres",473535,52.9225,24.3675,40.0175,12709
+"Castilla - La Mancha","Guadalajara",2023,"Hombres",139416,68.84,8.815,62.77,14689
+"Castilla - La Mancha","Guadalajara",2023,"Mujeres",135666,59.28,11.0825,52.7075,14689
+"Andalucía","Huelva",2023,"Hombres",265017,61.4325,16.1225,51.535,12008
+"Andalucía","Huelva",2023,"Mujeres",269067,51.985,20.9175,41.155,12008
+"Aragón","Huesca",2023,"Hombres",114938,63.2825,7.085,58.795,15140
+"Aragón","Huesca",2023,"Mujeres",111940,50.8025,10.165,45.63,15140
+"Andalucía","Jaén",2023,"Hombres",307398,59.495,16.03,49.9225,11847
+"Andalucía","Jaén",2023,"Mujeres",313239,44.6975,21.6025,35.0125,11847
+"Castilla y León","León",2023,"Hombres",218038,54.51,7.98,50.16,15110
+"Castilla y León","León",2023,"Mujeres",230535,45.9625,12.515,40.2075,15110
+"Cataluña","Lleida",2023,"Hombres",228557,65.4175,6.6375,61.0825,14713
+"Cataluña","Lleida",2023,"Mujeres",218786,52.3775,8.7625,47.7625,14713
+"Galicia","Lugo",2023,"Hombres",157332,54.625,7.595,50.47,14316
+"Galicia","Lugo",2023,"Mujeres",166935,50.36,8.86,45.895,14316
+"Madrid, Comunidad de","Madrid",2023,"Hombres",3288197,67.7175,8.7025,61.825,18142
+"Madrid, Comunidad de","Madrid",2023,"Mujeres",3583706,59.2225,11.25,52.56,18142
+"Andalucía","Málaga",2023,"Hombres",857246,62.8925,14.215,53.9575,12950
+"Andalucía","Málaga",2023,"Mujeres",895482,54.0725,19.655,43.4475,12950
+"Melilla","Melilla",2023,"Hombres",43162,61.595,26.6375,45.1725,13995
+"Melilla","Melilla",2023,"Mujeres",42331,49.775,26.625,36.5175,13995
+"Murcia, Región de","Murcia",2023,"Hombres",777819,66.14,10.945,58.9,12446
+"Murcia, Región de","Murcia",2023,"Mujeres",773873,53.1,15.0325,45.1125,12446
+"Navarra, Comunidad Foral de","Navarra",2023,"Hombres",332575,63.49,9.1575,57.6725,16423
+"Navarra, Comunidad Foral de","Navarra",2023,"Mujeres",339580,54.225,10.8375,48.355,16423
+"Galicia","Ourense",2023,"Hombres",146271,51.12,9.2975,46.38,14049
+"Galicia","Ourense",2023,"Mujeres",158292,46.745,9.8425,42.15,14049
+"Castilla y León","Palencia",2023,"Hombres",78125,61.255,6.535,57.2725,15147
+"Castilla y León","Palencia",2023,"Mujeres",79662,48.5275,11.4525,42.97,15147
+"Canarias","Palmas, Las",2023,"Hombres",569470,65.8,13.5925,56.85,13806
+"Canarias","Palmas, Las",2023,"Mujeres",576373,56.405,16.7025,46.985,13806
+"Galicia","Pontevedra",2023,"Hombres",456938,59.5475,10.0975,53.5325,14137
+"Galicia","Pontevedra",2023,"Mujeres",489772,49.17,11.97,43.2825,14137
+"Rioja, La","Rioja, La",2023,"Hombres",159151,64.45,7.8575,59.385,14827
+"Rioja, La","Rioja, La",2023,"Mujeres",163131,53.68,11.1175,47.705,14827
+"Castilla y León","Salamanca",2023,"Hombres",158779,59.075,9.6675,53.3625,14583
+"Castilla y León","Salamanca",2023,"Mujeres",168310,48.2675,12.1425,42.4075,14583
+"Canarias","Santa Cruz de Tenerife",2023,"Hombres",523253,63.8175,14.55,54.5475,13366
+"Canarias","Santa Cruz de Tenerife",2023,"Mujeres",543920,53.425,20.285,42.58,13366
+"Castilla y León","Segovia",2023,"Hombres",77867,64.0275,6.115,60.105,14949
+"Castilla y León","Segovia",2023,"Mujeres",77465,53.8225,10.38,48.24,14949
+"Andalucía","Sevilla",2023,"Hombres",956407,62.485,14.445,53.4625,12964
+"Andalucía","Sevilla",2023,"Mujeres",1002987,53.9725,19.1975,43.6075,12964
+"Castilla y León","Soria",2023,"Hombres",45396,60.395,5.3325,57.215,15626
+"Castilla y León","Soria",2023,"Mujeres",44132,53.1375,10.64,47.5,15626
+"Cataluña","Tarragona",2023,"Hombres",423714,64.185,10.1075,57.705,14559
+"Cataluña","Tarragona",2023,"Mujeres",424878,53.68,12.6575,46.89,14559
+"Aragón","Teruel",2023,"Hombres",68416,59.7675,7.51,55.305,14573
+"Aragón","Teruel",2023,"Mujeres",66630,54.0225,11.5725,47.7825,14573
+"Castilla - La Mancha","Toledo",2023,"Hombres",367880,66.445,10.0225,59.78,12422
+"Castilla - La Mancha","Toledo",2023,"Mujeres",363232,53.37,18.1525,43.6575,12422
+"Comunitat Valenciana","Valencia/València",2023,"Hombres",1299669,66.0675,10.24,59.3025,14435
+"Comunitat Valenciana","Valencia/València",2023,"Mujeres",1357172,55.39,13.9225,47.68,14435
+"Castilla y León","Valladolid",2023,"Hombres",253708,60.6975,7.3025,56.27,15590
+"Castilla y León","Valladolid",2023,"Mujeres",267625,49.91,11.715,44.0625,15590
+"Castilla y León","Zamora",2023,"Hombres",82770,56.7575,12.565,49.615,13897
+"Castilla y León","Zamora",2023,"Mujeres",84157,45.02,14.9425,38.29,13897
+"Aragón","Zaragoza",2023,"Hombres",479320,63.93,6.105,60.0275,15650
+"Aragón","Zaragoza",2023,"Mujeres",500045,54.665,11.1275,48.58,15650

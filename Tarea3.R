@@ -146,7 +146,7 @@ epa <- reshape(medias,
                direction = "wide")
 
 #Asignamos los nombres correspondientes a cada columna
-colnames(epa) <- c("provincia", "sexo", "tasa_actividad", "tasa_paro", "tasa_empleo")
+colnames(epa) <- c("provincia", "sexo", "tasa_actividad", "tasa_empleo", "tasa_paro")
 
 #Ordenamos las columnas: provincia, sexo, tasa_actividad, tasa_paro, tasa_empleo
 epa <- epa[, c("provincia", "sexo", "tasa_actividad", "tasa_paro", "tasa_empleo")]
@@ -167,54 +167,141 @@ print(head(epa))
 #Primero unimos poblacion y epa, que comparten provincia y sexo
 datos_temp <- merge(poblacion, epa, by = c("provincia", "sexo"))
 
-# Segunda unión: incorporamos renta a través de la clave provincia
+#Luego incorporamos renta a través de la clave provincia
 datos <- merge(datos_temp, renta, by = "provincia")
 
-# ==========================================
-# 2. Reordenación de columnas y filas
-# ==========================================
-
-# Definir el orden exacto de las columnas solicitado
+#Definimos el orden exacto de las columnas
 columnas_orden <- c("comunidad", "provincia", "anio", "sexo", "poblacion", 
                     "tasa_actividad", "tasa_paro", "tasa_empleo", "renta_media")
 datos <- datos[, columnas_orden]
 
-# Ordenar por provincia y sexo (reproduce la salida exacta mostrada en la captura)
-# Nota: Si el docente pide estrictamente por comunidad autónoma, se usaría:
-# datos <- datos[order(datos$comunidad, datos$provincia, datos$sexo), ]
+#Ordenamos por provincia y sexo
 datos <- datos[order(datos$provincia, datos$sexo), ]
 rownames(datos) <- NULL
 
-# Visualizar las primeras 6 filas para verificar la coincidencia con la captura
+#Mostramos las primeras 6 filas para comprobar que lo tenemos bien
 print(head(datos))
 
-# ==========================================
-# 3. Comprobaciones requeridas
-# ==========================================
-
-# A. Verificar que contiene exactamente 104 registros (52 provincias x 2 sexos)
+#Comprobamos que no se nos escape nada:
+#Verificamos que datos contiene exactamente 104 registros (52 provincias x 2 sexos)
 nrow(datos) == 104
 
-# B. Confirmar que no existen duplicados por provincia y sexo (debe devolver FALSE)
+#Confirmamos que no existen duplicados por provincia y sexo (debe devolver FALSE)
 any(duplicated(datos[, c("provincia", "sexo")]))
 
-# C. Comprobar tipos de datos de las variables
+#Comprobarmos los tipos de datos de las variables
 str(datos)
 
-# D. Comprobar que no se perdieron provincias (debe haber 52 provincias únicas)
+#Comprobamos que no se perdieron provincias (debe haber 52 provincias únicas)
 length(unique(datos$provincia)) == 52
 
-# E. Verificar que no existen valores faltantes (NA) producidos durante las uniones
+#Verificamos que no hay valores vacíos después de las uniones
 sum(is.na(datos)) == 0
 
-# F. Comprobar que la renta media es idéntica para hombres y mujeres dentro de la misma provincia
+#Comprobamos que la renta media dentro de una misma provincia es igual para hombres y mujeres
 all(tapply(datos$renta_media, datos$provincia, function(x) length(unique(x)) == 1))
 
-# ==========================================
-# 4. Exportar el conjunto integrado a CSV
-# ==========================================
-
+#Exportamos el conjunto integrado a CSV
 write.csv(datos, file = "datos_integrados_2023.csv", row.names = FALSE)
+
+
+
+
+#Ejercicio 5:
+#Definimos la función que va a consultar la información sobre una determinada provincia en un dataframe
+consultar_provincia <- function(df, nombre_provincia){
+  
+  #Primero comprobamos que los parámetros recibidos son válidos
+  if(!is.data.frame(df)){
+    stop("El primer parámetro debe ser un dataframe válido.")
+  }
+  if(!is.character(nombre_provincia) || length(nombre_provincia) != 1 || is.na(nombre_provincia)){
+    stop("El segundo parámetro debe ser una cadena de texto válida con el nombre de la provincia.")
+  }
+  if(!("provincia" %in% colnames(df))){
+    stop("El dataframe proporcionado no contiene la columna 'provincia'.")
+  }
+  
+  #La última comprobación es verificar si la provincia existe en el conjunto de datos
+  if(!(nombre_provincia %in% df$provincia)){
+    stop(paste("Provincia no encontrada:", nombre_provincia))
+  }
+  
+  #Una vez pasado el filtro, buscamos los registros correspondientes a la provincia introducida
+  resultado <- df[df$provincia == nombre_provincia,]
+  
+  #Reiniciamos el índice de las filas para que se vean ordenadas al mostrarlas por pantalla
+  rownames(resultado) <- NULL
+  
+  #Devolvemos los resultados
+  return(resultado)
+}
+
+#Comprobamos que funciona
+consultar_provincia(datos, 'Granada')
+
+#...o que no funciona
+consultar_provincia(datos, 'Graná')
+
+
+
+
+#Ejercicio 6:
+#Apartado A: Identifique las cinco provincias con mayor y menor tasa de paro femenina.
+
+#Filtramos los registros de mujeres y ordenamos por tasa de paro
+paro_mujeres <- datos[datos$sexo == "Mujeres", c("provincia", "tasa_paro")]
+
+#Seleccionamos las cinco provincias con mayor tasa de paro femenina y las ordenamos
+mayor_paro_fem <- head(paro_mujeres[order(-paro_mujeres$tasa_paro), ], 5)
+rownames(mayor_paro_fem) <- NULL
+
+#Seleccionamos las cinco provincias con menor tasa de paro femenina y las ordenamos
+menor_paro_fem <- head(paro_mujeres[order(paro_mujeres$tasa_paro), ], 5)
+rownames(menor_paro_fem) <- NULL
+
+print("Mayor tasa de paro femenina:")
+print(mayor_paro_fem)
+
+print("Menor tasa de paro femenina:")
+print(menor_paro_fem)
+
+
+#Apartado B: Determine las provincias con mayores diferencias entre las tasas de paro masculina y femenina.
+
+#Separamos las tasas por sexo
+paro_hombres <- datos[datos$sexo == "Hombres", c("provincia", "tasa_paro")]
+colnames(paro_hombres)[2] <- "paro_hombres"
+
+paro_mujeres <- datos[datos$sexo == "Mujeres", c("provincia", "tasa_paro")]
+colnames(paro_mujeres)[2] <- "paro_mujeres"
+
+#Unimos y calculamos la diferencia absoluta
+dif_paro <- merge(paro_hombres, paro_mujeres, by = "provincia")
+dif_paro$diferencia <- abs(dif_paro$paro_mujeres - dif_paro$paro_hombres)
+
+#Obtenemos las 5 provincias con mayor diferencia
+top_diferencias <- head(dif_paro[order(-dif_paro$diferencia), ], 5)
+rownames(top_diferencias) <- NULL
+
+#Mostramos el resultado
+print(top_diferencias)
+
+#Apartado C: Calcule la tasa media de paro de hombres y mujeres en las provincias andaluzas.
+
+#Seleccionamos los datos pertenecientes a la comunidad andaluza
+datos_andalucia <- subset(datos, comunidad == "Andalucía")
+
+#Calculamos la media por sexo usando aggregate y mean
+media_paro_andalucia <- aggregate(tasa_paro ~ sexo, data = datos_andalucia, FUN = mean)
+colnames(media_paro_andalucia) <- c("sexo", "media_tasa_paro")
+
+#Mostramos el resultado
+print(media_paro_andalucia)
+
+#Apartado D: Identifique las cinco provincias con mayor renta media por persona.
+#Apartado E: Determine si las provincias con mayor renta presentan también menores tasas de paro. Investigue con que indicador podríamos relacionar estas dos magnitudes. (Tip: Correlación entre datos)
+#Apartado F: Para cada consulta, muestre los resultados obtenidos y explique brevemente las instrucciones utilizadas.
 
 
 
